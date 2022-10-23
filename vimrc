@@ -91,7 +91,7 @@ let g:molokai_original = 1
 " Use UTF-8 in default
 set termencoding=utf-8
 set encoding=utf-8
-language messages en_US
+"language messages en_US
 set fileencodings=utf-8,big5,ucs-bom,latin1     "when reading files
 set fileencoding=utf-8      "when creating files
 set nobomb                  "no BOM in the file head
