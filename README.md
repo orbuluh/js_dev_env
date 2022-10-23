@@ -1,6 +1,10 @@
 
 # WSL quick tips
 - C drive is /mnt/c
+- git credential needs your windows to install git-bash, then in wsl linux prompt, do:
+```
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+```
 
 # Debian distribution
 ```
