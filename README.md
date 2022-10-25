@@ -21,11 +21,6 @@ sudo apt-get install python3 python3-pip
 sudo apt-get install npm
 ```
 
-# RHEL distribution
-
-```
-```
-
 # vim
 
 ```
@@ -33,6 +28,38 @@ mkdir -p ~/.vim/bundle/
 mkdir -p ~/.vim/undo
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln -s $PATH_TO_GIT_REPO/js_dev_env/vimrc ~/.vimrc
+```
+
+# [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
+
+## step 1: add ppa and install newer version first
+
+```bash
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+# bunch of options
+sudo apt-get install list g++* clang*
+# select the new version you prefer ...
+sudo apt-get install gcc-10 g++-10 clang-15
+```
+## step 2: make the symlink actually work together
+
+```bash
+# gcc-9 is what ubuntu originally defined
+# check `ll /usr/bin/gcc` and you will see what it is
+# here we set alternative option of originally gcc-9 as priority 50
+# then we set alternative option of new gcc-10 as priority 60
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 50 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10
+# run `sudo update-alternatives --config gcc` to verify
+# you will see the auto mode is  taking the one with higher priority
+# and it's also what you are using
+
+# same logic for clang. Originally it was clang-10, set as priority 50
+# install the clang-15 and then set with a higher priority
+# we can also verify through `sudo update-alternatives --config clang`
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-10 50 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-10
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 60 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15
 ```
 
 # [zx](https://github.com/google/zx)
