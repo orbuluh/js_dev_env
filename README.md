@@ -23,11 +23,10 @@ sudo apt-get install npm
 
 # vim
 
+Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
 ```
-mkdir -p ~/.vim/bundle/
-mkdir -p ~/.vim/undo
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-ln -s $PATH_TO_GIT_REPO/js_dev_env/vimrc ~/.vimrc
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
 
 # [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
