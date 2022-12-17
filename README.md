@@ -24,9 +24,23 @@ sudo apt-get install npm
 # vim
 
 Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
-```
+
+```bash
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
+```
+
+Adding plugin with The ultimate vimrc config:
+
+```bash
+# git clone the pulgin
+cd ~/.vim_runtime/sources_non_forked/
+git clone https://github.com/rhysd/vim-clang-format.git
+
+# Then it's basically good to use. But to make it more convenient, you can add to local config file:
+echo "map <F2> :ClangFormat<CR>" >> ~/.vim_runtime/my_configs.vim
+
+# Then whenever you press F2, it do the :ClangFormat
 ```
 
 # [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
