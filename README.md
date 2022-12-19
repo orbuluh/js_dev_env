@@ -21,6 +21,26 @@ sudo apt-get install python3 python3-pip
 sudo apt-get install npm
 ```
 
+# perf
+
+- check [stackoverflow](https://stackoverflow.com/a/74361501/4924135)
+> script /usr/bin/perf always trying to get the perf binary from `uname -r`
+> We could replace /usr/bin/perf with the actual perf ...
+
+```
+sudo apt install linux-tools-lowlatency-hwe-22.04
+
+# then you need to relink /usr/bin/perf (check above)
+sudo mv /usr/bin/perf /usr/bin/perf.bk
+sudo ln -s /usr/lib/linux-tools/5.15.0-56-lowlatency/perf /usr/bin/perf
+```
+
+Side note:
+
+> It is expected the hardware/cache counters are not available on WSL2
+
+> WSL2 runs inside a VM. For HW PMU events to work, the VM + hypervisor would need to support it, so it doesn't let you profile stuff outside of guest VM.
+
 # vim
 
 Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
