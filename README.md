@@ -1,5 +1,6 @@
+# Dev environment cookbook
 
-# WSL quick tips
+## WSL quick tips
 
 - C drive is /mnt/c
 - git credential needs your windows to install git-bash, then in wsl linux prompt, do:
@@ -8,7 +9,7 @@
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
-# Debian distribution
+## Debian distribution
 
 ```
 sudo apt-get upgrade
@@ -21,27 +22,7 @@ sudo apt-get install python3 python3-pip
 sudo apt-get install npm
 ```
 
-# perf
-
-- check [stackoverflow](https://stackoverflow.com/a/74361501/4924135)
-> script /usr/bin/perf always trying to get the perf binary from `uname -r`
-> We could replace /usr/bin/perf with the actual perf ...
-
-```
-sudo apt install linux-tools-lowlatency-hwe-22.04
-
-# then you need to relink /usr/bin/perf (check above)
-sudo mv /usr/bin/perf /usr/bin/perf.bk
-sudo ln -s /usr/lib/linux-tools/5.15.0-56-lowlatency/perf /usr/bin/perf
-```
-
-Side note:
-
-> It is expected the hardware/cache counters are not available on WSL2
-
-> WSL2 runs inside a VM. For HW PMU events to work, the VM + hypervisor would need to support it, so it doesn't let you profile stuff outside of guest VM.
-
-# vim
+## vim
 
 Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
 
@@ -63,9 +44,9 @@ echo "map <F2> :ClangFormat<CR>" >> ~/.vim_runtime/my_configs.vim
 # Then whenever you press F2, it do the :ClangFormat
 ```
 
-# [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
+## [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
 
-## step 1: add ppa and install newer version first
+**step 1: add ppa and install newer version first**
 
 ```bash
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -75,7 +56,8 @@ sudo apt-get install list g++* clang*
 # select the new version you prefer ...
 sudo apt-get install gcc-10 g++-10 clang-15
 ```
-## step 2: make the symlink actually work together
+
+**step 2: make the symlink actually work together**
 
 ```bash
 # gcc-9 is what ubuntu originally defined
@@ -95,7 +77,45 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-10 50 --s
 sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 60 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15
 ```
 
-# [zx](https://github.com/google/zx)
+## (latest) Boost
+
+**Step 1: Download source**
+
+- [Search Downloads in boost homepage](https://www.boost.org/)
+- Extract downloaded file, using 1_81_0 as example
+
+```bash
+bzip2 -d boost_1_81_0.tar.bz2
+tar xvf  boost_1_81_0.tar
+cd boost_1_81_0
+./bootstrap.sh --prefix=/usr/
+sudo ./b2 install # don't forget sudo!!
+```
+
+(Then your boost CMakeList query should be able to find it! Check repo cpp/boost)
+
+## perf
+
+- check [stackoverflow](https://stackoverflow.com/a/74361501/4924135)
+> script /usr/bin/perf always trying to get the perf binary from `uname -r`
+> We could replace /usr/bin/perf with the actual perf ...
+
+```
+sudo apt install linux-tools-lowlatency-hwe-22.04
+
+# then you need to relink /usr/bin/perf (check above)
+sudo mv /usr/bin/perf /usr/bin/perf.bk
+sudo ln -s /usr/lib/linux-tools/5.15.0-56-lowlatency/perf /usr/bin/perf
+```
+
+Side note:
+
+> It is expected the hardware/cache counters are not available on WSL2
+
+> WSL2 runs inside a VM. For HW PMU events to work, the VM + hypervisor would need to support it, so it doesn't let you profile stuff outside of guest VM.
+
+
+## [zx](https://github.com/google/zx)
 
 ```
 # install node version manager, nvm, otherwise Ubuntu gave old node
