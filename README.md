@@ -43,6 +43,30 @@ echo "map <F2> :ClangFormat<CR>" >> ~/.vim_runtime/my_configs.vim
 
 # Then whenever you press F2, it do the :ClangFormat
 ```
+## (latest) cmake
+
+- From [StackOverflow](https://askubuntu.com/a/865294/1660211)
+
+```bash
+# if you installed through official site with previous version, remove it
+sudo apt remove --purge --auto-remove cmake
+
+## tweak to latest listed in https://cmake.org/download/ which has title
+## Latest Release ($version.$build) that you can modify here
+version=3.25
+build=1
+#-----------------------------------
+mkdir ~/temp
+cd ~/temp
+wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
+tar -xzvf cmake-$version.$build.tar.gz
+cd cmake-$version.$build/
+./bootstrap
+make -j$(nproc)
+sudo make install
+cmake --version # confirm if it's good, then...
+# cd && rm -rf ~/temp
+```
 
 ## [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
 
