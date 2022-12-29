@@ -124,7 +124,7 @@ sudo ./b2 install # don't forget sudo!!
 > script /usr/bin/perf always trying to get the perf binary from `uname -r`
 > We could replace /usr/bin/perf with the actual perf ...
 
-```
+```bash
 sudo apt install linux-tools-lowlatency-hwe-22.04
 
 # then you need to relink /usr/bin/perf (check above)
@@ -138,10 +138,23 @@ Side note:
 
 > WSL2 runs inside a VM. For HW PMU events to work, the VM + hypervisor would need to support it, so it doesn't let you profile stuff outside of guest VM.
 
+## [bazel](https://bazel.build/install/ubuntu)
+
+```bash
+# Note: This is a one-time setup step - if you get "Unable to locate package bazel"
+sudo apt install apt-transport-https curl gnupg -y
+curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+
+#-----------------------------------------------------------------------
+sudo apt update && sudo apt install bazel
+bazel --version
+```
 
 ## [zx](https://github.com/google/zx)
 
-```
+```bash
 # install node version manager, nvm, otherwise Ubuntu gave old node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
