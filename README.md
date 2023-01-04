@@ -152,6 +152,21 @@ sudo apt update && sudo apt install bazel
 bazel --version
 ```
 
+## [Protobuf]()
+
+```bash
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf/
+git submodule update --init --recursive
+mkdir build && cd build && cmake ..
+
+# without `cmake ..` you will get "Cmake Error: could not load cache"!
+# also can't just use `cmake ..` ==> those flag cause me few hours to even make official example to build
+# (failed in location asking std::string_view, google suggests to add the below flags...)
+cmake -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DABSL_PROPAGATE_CXX_STD=TRUE ..
+sudo cmake --build . --target install # need sudo to install the lib
+```
+
 ## [zx](https://github.com/google/zx)
 
 ```bash
