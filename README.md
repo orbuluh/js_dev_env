@@ -167,6 +167,17 @@ cmake -DCMAKE_CXX_STANDARD=17 -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_POSITION
 sudo cmake --build . --target install # need sudo to install the lib
 ```
 
+## [OneTBB (TBB)](https://github.com/oneapi-src/oneTBB)
+
+```bash
+git clone https://github.com/oneapi-src/oneTBB.git
+cd oneTBB
+mkdir build
+cd build
+cmake ..
+sudo cmake --build . --target install
+```
+
 ## [zx](https://github.com/google/zx)
 
 ```bash
