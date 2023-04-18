@@ -1,6 +1,6 @@
 # md-fold README
 
-This is the README for your extension "md-fold". After writing up a brief description, we recommend including the following sections.
+Insert block for folding in markdown, when you select the block of code.
 
 ## Features
 

@@ -26,8 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
       await editor.edit((editBuilder) => {
         // You can replace these with the text you want to add
         const topText =
-          '<details><summary markdown="span">Examples</summary>\n';
-        const bottomText = "</summary></details>\n";
+          '<details><summary markdown="span">Examples</summary>\n\n';
+        const bottomText = "\n\n</summary></details>\n";
 
         editBuilder.insert(selection.start, topText);
         editBuilder.insert(selection.end, bottomText);
