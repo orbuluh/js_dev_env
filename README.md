@@ -9,6 +9,16 @@
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
+### Making wsl2 to access network app on local windows host
+
+- For example, you open Anki on windows, which has add-on AnkiConnect, which listens to port 8765
+- If you want to query the endpoint from WSL2, the magic is setting up port forwarding through:
+
+```bash
+# run powershell as admin on windows
+netsh interface portproxy add v4tov4 listenport=8765 listenaddress=0.0.0.0 connectport=8765 connectaddress=127.0.0.1
+```
+
 ## Debian distribution
 
 ```
