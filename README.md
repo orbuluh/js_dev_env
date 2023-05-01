@@ -9,14 +9,23 @@
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
-### Making wsl2 to access network app on local windows host
+### Windows port forward for WSL2 -> Windows host request
 
 - For example, you open Anki on windows, which has add-on AnkiConnect, which listens to port 8765
 - If you want to query the endpoint from WSL2, the magic is setting up port forwarding through:
 
 ```bash
-# run powershell as admin on windows
+# run powershell as admin on windows, use port 8765 as example, which is used by AnkiConnect
 netsh interface portproxy add v4tov4 listenport=8765 listenaddress=0.0.0.0 connectport=8765 connectaddress=127.0.0.1
+```
+- The annoying thing is that once you create the port forward, windows will create a [background process iphlpsvc which seems to be using the port (in fact, it's the port forward netsh binding the port under the hood.](https://superuser.com/a/1729731). Your original app (like AnkiConnect) might not be able to bind the port again after reopening.
+- What you can do is remove the port forward first, reopen app, then bind the port again.
+
+```bash
+# remove the above port forward rule first
+netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
+
+# run above add  port forward command again once you reopen your app
 ```
 
 ## Debian distribution
