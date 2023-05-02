@@ -5,8 +5,12 @@
 - C drive is /mnt/c
 - git credential needs your windows to install git-bash, then in wsl linux prompt, do:
 
-```
+```bash
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
+
+# so that git will show unicode correctly in its message
+# git config --global core.quotePath false
+git config --global core.quotePath false
 ```
 
 ### Windows port forward for WSL2 -> Windows host request
