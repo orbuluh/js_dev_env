@@ -99,9 +99,9 @@ cmake --version # confirm if it's good, then...
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 # bunch of options
-sudo apt-get install list g++* clang*
+sudo apt-get install list "g\+\+\-1.*" "clang\-1.*"
 # select the new version you prefer ...
-sudo apt-get install gcc-10 g++-10 clang-15
+sudo apt-get install gcc-13 g++-12 clang-15
 ```
 
 **step 2: make the symlink actually work together**
