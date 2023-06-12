@@ -9,6 +9,7 @@
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
 [core]
 	editor = vim
+	# so that git will show unicode correctly in its message
 	quotePath = false
 [i18n]
 	commitencoding = utf-8

@@ -5,13 +5,6 @@
 - C drive is /mnt/c
 - git credential needs your windows to install git-bash, then in wsl linux prompt, do:
 
-```bash
-git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
-
-# so that git will show unicode correctly in its message
-# git config --global core.quotePath false
-git config --global core.quotePath false
-```
 
 ### Windows port forward for WSL2 -> Windows host request
 
@@ -46,6 +39,13 @@ sudo apt-get install npm
 ```
 
 ## Enable your config files
+
+- Install Git for windows from: https://gitforwindows.org/  (might not be necessary?)
+
+```bash
+# add to ~/.bashrc so that credential manager can find the git.exe
+export PATH=$PATH:/mnt/c/Program\ Files/Git/bin
+```
 
 ```bash
 path_to_js_dev_env=~/orbuluh_repo/js_dev_env
