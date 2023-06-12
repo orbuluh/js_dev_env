@@ -45,6 +45,19 @@ sudo apt-get install python3 python3-pip
 sudo apt-get install npm
 ```
 
+## Enable your config files
+
+```bash
+path_to_js_dev_env=~/orbuluh_repo/js_dev_env
+cd
+ln -sf ${path_to_js_dev_env}/gitconfig .gitconfig
+ln -sf ${path_to_js_dev_env}/tmux.conf .tmux.conf
+
+echo "source ${path_to_js_dev_env}/git_related.env" >> ~/.bashrc
+echo "source ${path_to_js_dev_env}/color_code.env" >> ~/.bashrc
+echo "source ${path_to_js_dev_env}/other_alias.env" >> ~/.bashrc
+```
+
 ## vim
 
 Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
