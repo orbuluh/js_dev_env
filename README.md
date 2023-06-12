@@ -34,28 +34,20 @@ sudo apt-get install clang
 sudo apt-get install clang-format
 sudo apt-get install cmake
 sudo apt-get install wget ca-certificates
-sudo apt-get install python3 python3-pip
+sudo apt-get install python3 python3-pip ipython
 sudo apt-get install npm
 ```
 
-## Enable your config files
+## Load your setup
 
-- Install Git for windows from: https://gitforwindows.org/  (might not be necessary?)
-
-```bash
-# add to ~/.bashrc so that credential manager can find the git.exe
-export PATH=$PATH:/mnt/c/Program\ Files/Git/bin
-```
+- Adding this to ~/.bashrc
 
 ```bash
-path_to_js_dev_env=~/orbuluh_repo/js_dev_env
-cd
-ln -sf ${path_to_js_dev_env}/gitconfig .gitconfig
-ln -sf ${path_to_js_dev_env}/tmux.conf .tmux.conf
-
-echo "source ${path_to_js_dev_env}/git_related.env" >> ~/.bashrc
-echo "source ${path_to_js_dev_env}/color_code.env" >> ~/.bashrc
-echo "source ${path_to_js_dev_env}/other_alias.env" >> ~/.bashrc
+# dev_folder should be where you put all the repos
+export dev_folder=~/orbuluh_repo
+export env_folder=${dev_folder}/js_dev_env
+export key_base_dir=${dev_folder}/keys
+source ${env_folder}/bashrc_extra.env
 ```
 
 ## vim
