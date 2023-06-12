@@ -76,8 +76,8 @@ sudo apt remove --purge --auto-remove cmake
 
 ## tweak to latest listed in https://cmake.org/download/ which has title
 ## Latest Release ($version.$build) that you can modify here
-version=3.25
-build=1
+version=3.26
+build=4
 #-----------------------------------
 mkdir ~/temp
 cd ~/temp
