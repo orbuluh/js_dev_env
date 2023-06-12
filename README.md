@@ -109,19 +109,21 @@ sudo apt-get install gcc-13 g++-12 clang-15
 ```bash
 # gcc-9 is what ubuntu originally defined
 # check `ll /usr/bin/gcc` and you will see what it is
-# here we set alternative option of originally gcc-9 as priority 50
-# then we set alternative option of new gcc-10 as priority 60
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 50 --slave /usr/bin/g++ g++ /usr/bin/g++-9
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10
+# --slave: This option is used to add slave links to the main command or program.
+
+# we set alternative option of originally gcc-11/g++-11 as priority 50
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 50 --slave /usr/bin/g++ g++ /usr/bin/g++-11
+# then we set alternative option of new gcc-13/g++-12 as priority 60
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 60 --slave /usr/bin/g++ g++ /usr/bin/g++-12
 # run `sudo update-alternatives --config gcc` to verify
-# you will see the auto mode is  taking the one with higher priority
+# you will see the auto mode is taking the one with higher priority
 # and it's also what you are using
 
-# same logic for clang. Originally it was clang-10, set as priority 50
+# same logic for clang. Originally it was clang-14, set as priority 50
 # install the clang-15 and then set with a higher priority
-# we can also verify through `sudo update-alternatives --config clang`
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-10 50 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-10
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-14 50 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-14
 sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 60 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-15
+# we can also verify through `sudo update-alternatives --config clang`
 ```
 
 ## (latest) Boost
@@ -129,14 +131,17 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 60 --s
 **Step 1: Download source**
 
 - [Search Downloads in boost homepage](https://www.boost.org/)
-- Extract downloaded file, using 1_81_0 as example
+- Extract downloaded file, using 1_82_0 as example
 
 ```bash
-bzip2 -d boost_1_81_0.tar.bz2
-tar xvf  boost_1_81_0.tar
-cd boost_1_81_0
+cd
+wget https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.bz2
+bzip2 -d boost_1_82_0.tar.bz2
+tar xvf  boost_1_82_0.tar
+cd boost_1_82_0
 ./bootstrap.sh --prefix=/usr/
 sudo ./b2 install # don't forget sudo!!
+cd && sudo rm -rf boost_1_82_0*
 ```
 
 (Then your boost CMakeList query should be able to find it! Check repo cpp/boost)
