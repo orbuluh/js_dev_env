@@ -3,7 +3,9 @@
 ## WSL quick tips
 
 - C drive is /mnt/c
-- git credential needs your windows to install git-bash, then in wsl linux prompt, do:
+- :rotating_light: Windows setup :rotating_light: Control Panel -> Region -> Administrative -> Beta: Use Unicode UTF-8 for worldwide language support"
+  - (Without this, when you copy utf-8 text with pyperclip, it just turns into garbage...)
+
 
 
 ### Windows port forward for WSL2 -> Windows host request
