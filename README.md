@@ -28,14 +28,14 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 ## Debian distribution
 
 ```
-sudo apt-get upgrade
-sudo apt-get update
-sudo apt-get install clang
-sudo apt-get install clang-format
-sudo apt-get install cmake
-sudo apt-get install wget ca-certificates
-sudo apt-get install python3 python3-pip ipython
-sudo apt-get install npm
+sudo apt upgrade
+sudo apt update
+sudo apt install silversearcher-ag
+sudo apt install clang
+sudo apt install clang-format
+sudo apt install wget ca-certificates
+sudo apt install python3 python3-pip ipython
+sudo apt install npm
 ```
 
 ## Load your setup
