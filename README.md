@@ -50,6 +50,19 @@ export key_base_dir=${dev_folder}/keys
 source ${env_folder}/bashrc_extra.env
 ```
 
+## X11 apps / google chrome if needed
+
+- Needs to install one browser in WSL2 so google-auth can work
+  - (otherwise there will be error when auth2 try to open page)
+
+```bash
+sudo apt install x11-apps -y
+cd /tmp
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt install --fix-broken -y
+```
+
 ## vim
 
 Just use [The Ultimate vimrc](https://github.com/amix/vimrc)
