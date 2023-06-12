@@ -2,11 +2,14 @@
 
 ## Dev
 
+<details><summary markdown="span"></summary>
+
 - Setup:
 
 ```bash
 sudo npm install -g yo generator-code
 ```
+</summary></details>
 
 - Run` yo code` in the terminal to start the generator.
 - Follow the prompts to set up your extension, choosing "TypeScript" when asked for the language.
@@ -14,6 +17,7 @@ sudo npm install -g yo generator-code
 - Modify `src/extension.ts` and `package.json`
 - In `package.json`: `commands->title` will be what is shown when you press `Ctrl+Shift+P`
 - Click F5 to enter debug/try mode
+
 
 ## Recompile
 
