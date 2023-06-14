@@ -32,9 +32,8 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 ```
 sudo apt upgrade
 sudo apt update
-sudo apt install silversearcher-ag
-sudo apt install clang
-sudo apt install clang-format
+sudo apt install silversearcher-ag tree
+sudo apt install clang clang-format
 sudo apt install wget ca-certificates
 sudo apt install python3 python3-pip ipython
 sudo apt install npm
