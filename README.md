@@ -7,7 +7,6 @@
   - (Without this, when you copy utf-8 text with pyperclip, it just turns into garbage...)
 
 
-
 ### Windows port forward for WSL2 -> Windows host request
 
 - For example, you open Anki on windows, which has add-on AnkiConnect, which listens to port 8765
@@ -26,6 +25,11 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 
 # run above add  port forward command again once you reopen your app
 ```
+
+## Windows install git
+
+- The one on Microsoft App Store might be old (and create some annoying warning, for example)
+- Can find the latest in https://github.com/git-for-windows/git/releases
 
 ## Debian distribution
 
