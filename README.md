@@ -1,5 +1,10 @@
 # Dev environment cookbook
 
+## Fonts
+
+- https://fonts.google.com/noto/specimen/Noto+Serif+TC
+- https://github.com/max32002/naikaifont
+
 ## WSL quick tips
 
 - C drive is /mnt/c
@@ -36,12 +41,15 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 ```
 sudo apt upgrade
 sudo apt update
-sudo apt install silversearcher-ag tree
-sudo apt install clang clang-format
-sudo apt install wget ca-certificates
-sudo apt install python3 python3-pip ipython
-sudo apt install npm
+sudo apt install -y silversearcher-ag tree clang clang-format wget \
+                    python3 python3-pip npm
 ```
+
+
+## PS1 setting
+
+- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
+- Or simpler, just check your git_related.env file for the gitprompt
 
 ## Load your setup
 
@@ -55,7 +63,52 @@ export key_base_dir=${dev_folder}/keys
 source ${env_folder}/bashrc_extra.env
 ```
 
-## X11 apps / google chrome if needed
+## Remote connection X11 forwarding to vscode Remote ext
+
+- Say on your Windows, you use vscode's Remote ext to connect to a linux host, and you want to open GUI apps on the linux host and display it on your Windows machine.
+
+- [https://zhuanlan.zhihu.com/p/461378596](check this guide)
+
+> 1. On Windows local machine
+
+- To enable X11 Forwarding, the following two lines should be added to ssh config file `C:\Users\[user]\.ssh\config` (This is also the config that the Remote ext will use)
+
+```bash
+ForwardX11 yes
+ForwardX11Trusted yes
+```
+
+- 2. Download & install X11 server like VcXsrv, Xming, etc. Use VxServ as example here
+
+> Remote host
+
+- 3. Usually, the $DISPLAY variable is set on remote host by default when you have configured the ssh config on your Windows localhost On remote host, you should see something like
+
+```bash
+> echo $DISPLAY
+localhost:10.0
+
+# remember the number from output, for example here, 10
+```
+
+- If the output is blank, you should set the $DISPLAY value by yourself.
+
+```bash
+export DISPLAY=localhost:10.0
+```
+
+> Back to local Windows host
+
+- 4. Run VcXsrv, where the display number should be the value you get from previous Step 3.1, for example, 10 above
+- 5. Tick Disable access control and start the VxServ
+
+
+> Back to remote host
+
+- Run xeyes and see if it's forwarding to your local Windows
+
+
+## X11 apps/Chrome on WSL2 and display on local windows
 
 - Needs to install one browser in WSL2 so google-auth can work
   - (otherwise there will be error when auth2 try to open page)
