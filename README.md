@@ -2,8 +2,9 @@
 
 ## Fonts
 
-- https://fonts.google.com/noto/specimen/Noto+Serif+TC
-- https://github.com/max32002/naikaifont
+- [Noto](https://fonts.google.com/noto/specimen/Noto+Serif+TC)
+- [Naikai](https://github.com/max32002/naikaifont)
+- [D2Coding](https://github.com/naver/d2codingfont)
 
 ## WSL quick tips
 
