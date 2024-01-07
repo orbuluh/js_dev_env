@@ -1,5 +1,22 @@
 # Dev environment cookbook
 
+
+## Load your setup
+
+- Adding this to ~/.bashrc
+
+```bash
+# dev_folder should be where you put all the repos
+export dev_folder=[path_to]/orbuluh_repo
+source ${env_folder}/bashrc_extra.env
+```
+
+## PS1 setting
+
+- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
+- Or simpler, just check your git_related.env file for the gitprompt
+
+
 ## Fonts
 
 - [Noto](https://fonts.google.com/noto/specimen/Noto+Serif+TC)
@@ -44,24 +61,6 @@ sudo apt upgrade
 sudo apt update
 sudo apt install -y silversearcher-ag tree clang clang-format wget \
                     python3 python3-pip npm
-```
-
-
-## PS1 setting
-
-- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
-- Or simpler, just check your git_related.env file for the gitprompt
-
-## Load your setup
-
-- Adding this to ~/.bashrc
-
-```bash
-# dev_folder should be where you put all the repos
-export dev_folder=~/orbuluh_repo
-export env_folder=${dev_folder}/js_dev_env
-export key_base_dir=${dev_folder}/keys
-source ${env_folder}/bashrc_extra.env
 ```
 
 ## Remote connection X11 forwarding to vscode Remote ext
