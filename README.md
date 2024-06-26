@@ -29,7 +29,6 @@ source ${env_folder}/bashrc_extra.env
 - :rotating_light: Windows setup :rotating_light: Control Panel -> Region -> Administrative -> Beta: Use Unicode UTF-8 for worldwide language support"
   - (Without this, when you copy utf-8 text with pyperclip, it just turns into garbage...)
 
-
 ### Windows port forward for WSL2 -> Windows host request
 
 - For example, you open Anki on windows, which has add-on AnkiConnect, which listens to port 8765
@@ -39,6 +38,7 @@ source ${env_folder}/bashrc_extra.env
 # run powershell as admin on windows, use port 8765 as example, which is used by AnkiConnect
 netsh interface portproxy add v4tov4 listenport=8765 listenaddress=0.0.0.0 connectport=8765 connectaddress=127.0.0.1
 ```
+
 - The annoying thing is that once you create the port forward, windows will create a [background process iphlpsvc which seems to be using the port (in fact, it's the port forward netsh binding the port under the hood.](https://superuser.com/a/1729731). Your original app (like AnkiConnect) might not be able to bind the port again after reopening.
 - What you can do is remove the port forward first, reopen app, then bind the port again.
 
@@ -52,7 +52,7 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 ## Windows install git
 
 - The one on Microsoft App Store might be old (and create some annoying warning, for example)
-- Can find the latest in https://github.com/git-for-windows/git/releases
+- Can find the latest in <https://github.com/git-for-windows/git/releases>
 
 ## Debian distribution
 
@@ -61,6 +61,23 @@ sudo apt upgrade
 sudo apt update
 sudo apt install -y silversearcher-ag tree clang clang-format wget \
                     python3 python3-pip npm
+```
+
+## PS1 setting
+
+- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
+- Or simpler, just check your git_related.env file for the gitprompt
+
+## Load your setup
+
+- Adding this to ~/.bashrc
+
+```bash
+# dev_folder should be where you put all the repos
+export dev_folder=~/orbuluh_repo
+export env_folder=${dev_folder}/js_dev_env
+export key_base_dir=${dev_folder}/keys
+source ${env_folder}/bashrc_extra.env
 ```
 
 ## Remote connection X11 forwarding to vscode Remote ext
@@ -102,11 +119,9 @@ export DISPLAY=localhost:10.0
 - 4. Run VcXsrv, where the display number should be the value you get from previous Step 3.1, for example, 10 above
 - 5. Tick Disable access control and start the VxServ
 
-
 > Back to remote host
 
 - Run xeyes and see if it's forwarding to your local Windows
-
 
 ## X11 apps/Chrome on WSL2 and display on local windows
 
@@ -142,6 +157,7 @@ echo "map <F2> :ClangFormat<CR>" >> ~/.vim_runtime/my_configs.vim
 
 # Then whenever you press F2, it do the :ClangFormat
 ```
+
 ## (latest) cmake
 
 - From [StackOverflow](https://askubuntu.com/a/865294/1660211)
@@ -165,6 +181,9 @@ make -j$(nproc)
 sudo make install
 cmake --version # confirm if it's good, then...
 # cd && rm -rf ~/temp
+
+# In addition...
+sudo apt-get install pkg-config
 ```
 
 ## [gcc, g++, clang, clang++ to a newer version](https://azrael.digipen.edu/~mmead/www/mg/update-compilers/index.html)
@@ -175,7 +194,7 @@ cmake --version # confirm if it's good, then...
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 # bunch of options
-sudo apt-get install list "g\+\+\-1.*" "clang\-1.*"
+sudo apt-get install list "g\+\+\-1.$" "clang\-1.$" "gcc-1.$"
 # select the new version you prefer ...
 sudo apt-get install gcc-13 g++-12 clang-15
 ```
@@ -189,8 +208,10 @@ sudo apt-get install gcc-13 g++-12 clang-15
 
 # we set alternative option of originally gcc-11/g++-11 as priority 50
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 50 --slave /usr/bin/g++ g++ /usr/bin/g++-11
+
 # then we set alternative option of new gcc-13/g++-12 as priority 60
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 60 --slave /usr/bin/g++ g++ /usr/bin/g++-12
+
 # run `sudo update-alternatives --config gcc` to verify
 # you will see the auto mode is taking the one with higher priority
 # and it's also what you are using
@@ -225,6 +246,7 @@ cd && sudo rm -rf boost_1_82_0*
 ## perf
 
 - check [stackoverflow](https://stackoverflow.com/a/74361501/4924135)
+
 > script /usr/bin/perf always trying to get the perf binary from `uname -r`
 > We could replace /usr/bin/perf with the actual perf ...
 
