@@ -1,6 +1,5 @@
 # Dev environment cookbook
 
-
 ## Load your setup
 
 - Adding this to ~/.bashrc
@@ -16,12 +15,12 @@ source ${env_folder}/bashrc_extra.env
 - potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
 - Or simpler, just check your git_related.env file for the gitprompt
 
-
 ## Fonts
 
 - [Noto](https://fonts.google.com/noto/specimen/Noto+Serif+TC)
 - [Naikai](https://github.com/max32002/naikaifont)
 - [D2Coding](https://github.com/naver/d2codingfont)
+- [nerdfonts](https://www.nerdfonts.com/font-downloads)
 
 ## WSL quick tips
 
@@ -48,11 +47,6 @@ netsh interface portproxy delete v4tov4 listenport=8765 listenaddress=0.0.0.0
 
 # run above add  port forward command again once you reopen your app
 ```
-
-## Windows install git
-
-- The one on Microsoft App Store might be old (and create some annoying warning, for example)
-- Can find the latest in <https://github.com/git-for-windows/git/releases>
 
 ## Debian distribution
 
