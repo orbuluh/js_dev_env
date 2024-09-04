@@ -1,5 +1,17 @@
 # Dev environment cookbook
 
+## NixOS on WSL
+
+- Download the [latest release](https://github.com/nix-community/NixOS-WSL/releases)
+- windows shell, choose your location to mount it
+
+```windows
+wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
+```
+
+- Run: `wsl -d NixOS`
+- make NixOS the default wsl: `wsl -s NixOS`
+
 ## Load your setup
 
 - Adding this to ~/.bashrc
