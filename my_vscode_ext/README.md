@@ -1,15 +1,26 @@
 # My VSCODE extension
 
-## Dev
 
-<details><summary markdown="span"></summary>
-
-- Setup:
+## Packages to install
 
 ```bash
-sudo npm install -g yo generator-code
+# Install nvm
+##   or check: https://github.com/nvm-sh/nvm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
+
+# Install npm
+nvm install node --latest-npm
+npm update
+npm upgrade
+# Install required modules
+npm install -g yo generator-code typescript @vscode/vsce
+npm audit fix --force
 ```
-</summary></details>
+
+
+
+## Dev
 
 - Run` yo code` in the terminal to start the generator.
 - Follow the prompts to set up your extension, choosing "TypeScript" when asked for the language.
@@ -25,13 +36,12 @@ sudo npm install -g yo generator-code
 - You might need to clean up the build files and recompile your extension to make sure your changes are reflected.
 
 ```bash
-rm -rf out/*0
+rm -rf out/*
 npm run compile
 ```
 
 ## Publish as local .vsix file
 
-- Set up: `npm install -g vsce`
 - Need to edit the READEME.md (or next command will tell you to)
 - Navigate to your extension's project folder in the terminal and run the following command to package your extension into a .vsix file:
 
