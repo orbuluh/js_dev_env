@@ -12,6 +12,13 @@ wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
 - Run: `wsl -d NixOS`
 - make NixOS the default wsl: `wsl -s NixOS`
 
+## WezTerm with WSL
+
+- reference from [here](https://mayberoot.medium.com/the-perfect-windows-11-dev-environment-setup-with-wezterm-wsl2-and-neovim-d73ab1202703)
+- add the `HOME` environment variable that resolves to C:\Users\username
+- add the `XDG_CONFIG_HOME` environment variable that resolves to C:\Users\username\.config
+- creates `wezterm.lua` under `XDG_CONFIG_HOME` with [content](./wezterm.lua)
+
 ## Load your setup
 
 - Adding this to ~/.bashrc
