@@ -1,36 +1,37 @@
 # Dev environment cookbook
 
-## Nix
+## Nix and direnv
 
-### Install
+### Install nix
 
 ```bash
 curl -L https://raw.githubusercontent.com/NixOS/experimental-nix-installer/main/nix-installer.sh | sh -s install
 ```
 
-### Upgrading nix
-
-```bash
-nix-channel --update; nix-env --install --attr nixpkgs.nix nixpkgs.cacert
-```
-
-### Enable flake
+### Enable nix flake
 
 ```bash
 touch ~/.config/nix/nix.conf
 echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
-### devenv
+### Install direnv
 
 ```bash
-# install devenv
-nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
-
 # install direnv
 curl -sfL https://direnv.net/install.sh | bash
 # Add the following line at the end of the ~/.bashrc file:
 # eval "$(direnv hook bash)"
+```
+
+- vscode - install `mkhl.direnv` extension
+- (By doing so, vscode ipython notebook can find the virtual env set up correctly)
+
+### Install devenv
+
+```bash
+# install devenv
+nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
 ```
 
 ### NixOS on WSL?
