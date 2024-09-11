@@ -1,6 +1,39 @@
 # Dev environment cookbook
 
-## NixOS on WSL
+## Nix
+
+### Install
+
+```bash
+curl -L https://raw.githubusercontent.com/NixOS/experimental-nix-installer/main/nix-installer.sh | sh -s install
+```
+
+### Upgrading nix
+
+```bash
+nix-channel --update; nix-env --install --attr nixpkgs.nix nixpkgs.cacert
+```
+
+### Enable flake
+
+```bash
+touch ~/.config/nix/nix.conf
+echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+```
+
+### devenv
+
+```bash
+# install devenv
+nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
+
+# install direnv
+curl -sfL https://direnv.net/install.sh | bash
+# Add the following line at the end of the ~/.bashrc file:
+# eval "$(direnv hook bash)"
+```
+
+### NixOS on WSL?
 
 - Download the [latest release](https://github.com/nix-community/NixOS-WSL/releases)
 - windows shell, choose your location to mount it
@@ -11,6 +44,14 @@ wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
 
 - Run: `wsl -d NixOS`
 - make NixOS the default wsl: `wsl -s NixOS`
+
+## [Prompt: Starship](https://starship.rs/guide/)
+
+- prompt that can work well with direnv
+
+```bash
+ln -sf $(pwd)/starship.toml ~/.config/
+```
 
 ## WezTerm with WSL
 
