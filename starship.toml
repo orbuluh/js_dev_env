@@ -1,16 +1,74 @@
 # https://starship.rs/config/
 
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Use custom format
+format = """
+[╭─](white)$username\
+$directory\
+$direnv\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$nix_shell\
+$custom\
+$cmd_duration\
+$line_break\
+[╰─](white)\
+$sudo\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$memory_usage\
+$character """
+
+
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
 
 [username]
-format = "[$user]($style)"
+show_always = true
+style_root = "bold red"
+style_user = "bold yellow"
+format = "[$user]($style) "
+disabled = false
 
 [hostname]
-format = "[@$hostname]($style) "
+ssh_only = false
+format =  "on [$hostname](bold red)"
+trim_at = ".companyname.com"
+disabled = true
+
+[directory]
+read_only = "🔒"
+style = "bold cyan"
+read_only_style = "red"
+truncation_length = 8
+truncation_symbol = "…/"
+format = "[$read_only]($read_only_style)[$path]($style) "
+disabled = false
+
+[direnv]
+disabled = false
+format = '[$symbol$loaded/$allowed]($style) '
 
 [cmd_duration]
-format = "[$duration]($style) "
+min_time = 50
+show_milliseconds = true
+format = "[ $duration]($style)"
+
 
 [git_commit]
 commit_hash_length = 4
@@ -28,16 +86,3 @@ disabled = false
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
-
-
-[nodejs]
-disabled = true
-
-[lua]
-disabled = true
-
-[aws]
-disabled = true
-
-[gcloud]
-disabled = true
