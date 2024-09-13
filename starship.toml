@@ -5,8 +5,11 @@ add_newline = false
 
 # Use custom format
 format = """
-[╭─](white)$username\
+[╭─](white)\
+$username\
+$time\
 $directory\
+$nix_shell\
 $direnv\
 $vcsh\
 $fossil_branch\
@@ -18,7 +21,6 @@ $git_metrics\
 $git_status\
 $hg_branch\
 $docker_context\
-$nix_shell\
 $custom\
 $cmd_duration\
 $line_break\
@@ -26,13 +28,12 @@ $line_break\
 $sudo\
 $jobs\
 $battery\
-$time\
-$status\
 $os\
 $container\
 $shell\
 $memory_usage\
-$character """
+$status\
+$character"""
 
 
 # Wait 10 milliseconds for starship to check files under the current directory.
@@ -62,13 +63,23 @@ disabled = false
 
 [direnv]
 disabled = false
-format = '[$symbol$loaded/$allowed]($style) '
+format = '[$symbol$loaded$allowed]($style) '
+symbol = '🔹'
+allowed_msg = ''
+loaded_msg = ''
+not_allowed_msg = '🛑'
+denied_msg = '⛔'
+unloaded_msg = '❓'
 
 [cmd_duration]
 min_time = 50
 show_milliseconds = true
-format = "[ $duration]($style)"
+format = "[ $duration]($style) "
 
+[time]
+disabled = false
+style = "#4169e1"
+format = "[🕙 $time]($style) "
 
 [git_commit]
 commit_hash_length = 4
@@ -80,9 +91,25 @@ cherry_pick = '[🍒 PICKING](bold red)'
 disabled = false
 
 [git_metrics]
-disabled = false
+disabled = true
 
 [git_status]
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+style = "#f05133"
+format = "($conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind\b )"
+conflicted = "[ ](fg:88)[   ${count} ](fg:white bg:88)[ ](fg:88)"
+staged = "[M$count ](fg:green)"
+modified = "[M${count} ](fg:red)"
+renamed = "[R${count} ](fg:208)"
+deleted = "[ ${count} ](fg:208)"
+untracked = "[?${count} ](fg:red)"
+stashed = " ${count} "
+ahead = "[ ${count} ](fg:purple)"
+behind = "[ ${count} ](fg:yellow)"
+diverged = "[](fg:88)[  נּ ](fg:white bg:88)[ ${ahead_count} ](fg:purple bg:88)[ ${behind_count} ](fg:yellow bg:88)[ ](fg:88)"
+
+[nix_shell]
+disabled = false
+impure_msg = '[impure](bold red)'
+pure_msg = '[pure](bold green)'
+unknown_msg = '[unknown](bold yellow)'
+format = '[$state$symbol(\($name\))](bold blue) '
