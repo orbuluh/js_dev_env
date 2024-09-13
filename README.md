@@ -34,6 +34,16 @@ curl -sfL https://direnv.net/install.sh | bash
 nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
 ```
 
+### Upgrade pkg (for example, devenv)
+
+```bash
+nix-channel --update devenv
+nix-env --upgrade --attr nixpkgs.devenv
+
+# or you can upgrade everything with
+# nix-env --upgrade
+```
+
 ### NixOS on WSL?
 
 - Download the [latest release](https://github.com/nix-community/NixOS-WSL/releases)
@@ -117,11 +127,6 @@ sudo apt update
 sudo apt install -y silversearcher-ag tree clang clang-format wget \
                     python3 python3-pip npm
 ```
-
-## PS1 setting
-
-- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
-- Or simpler, just check your git_related.env file for the gitprompt
 
 ## Load your setup
 
