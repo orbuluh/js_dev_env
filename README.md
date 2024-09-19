@@ -1,5 +1,20 @@
 # Dev environment cookbook
 
+## [Prompt: Starship](https://starship.rs/guide/)
+
+- prompt that can work well with direnv
+
+```bash
+curl -sS https://starship.rs/install.sh | sh
+# Add the following line at the end of the ~/.bashrc file:
+# eval "$(starship init bash)"
+# (you put in your bashrc_extra.env already)
+```
+
+```bash
+ln -sf $(pwd)/starship.toml ~/.config/
+```
+
 ## Nix and direnv
 
 ### Install nix
@@ -11,6 +26,7 @@ curl -L https://raw.githubusercontent.com/NixOS/experimental-nix-installer/main/
 ### Enable nix flake
 
 ```bash
+mkdir -p ~/.config/nix
 touch ~/.config/nix/nix.conf
 echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
@@ -22,6 +38,7 @@ echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.con
 curl -sfL https://direnv.net/install.sh | bash
 # Add the following line at the end of the ~/.bashrc file:
 # eval "$(direnv hook bash)"
+# (you put in your bashrc_extra.env already)
 ```
 
 - vscode - install `mkhl.direnv` extension
@@ -44,6 +61,14 @@ nix-env --upgrade --attr nixpkgs.devenv
 # nix-env --upgrade
 ```
 
+### Devenv a project
+
+```bash
+devenv init
+```
+
+- then copy over some examples from [devenv repo](https://github.com/cachix/devenv/tree/main/examples)
+
 ### NixOS on WSL?
 
 - Download the [latest release](https://github.com/nix-community/NixOS-WSL/releases)
@@ -55,14 +80,6 @@ wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
 
 - Run: `wsl -d NixOS`
 - make NixOS the default wsl: `wsl -s NixOS`
-
-## [Prompt: Starship](https://starship.rs/guide/)
-
-- prompt that can work well with direnv
-
-```bash
-ln -sf $(pwd)/starship.toml ~/.config/
-```
 
 ## WezTerm with WSL
 
@@ -80,11 +97,6 @@ ln -sf $(pwd)/starship.toml ~/.config/
 export dev_folder=[path_to]/orbuluh_repo
 source ${env_folder}/bashrc_extra.env
 ```
-
-## PS1 setting
-
-- potential: [Powerline-shell](https://github.com/b-ryan/powerline-shell)
-- Or simpler, just check your git_related.env file for the gitprompt
 
 ## Fonts
 
