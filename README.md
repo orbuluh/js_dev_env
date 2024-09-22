@@ -31,6 +31,21 @@ touch ~/.config/nix/nix.conf
 echo "extra-experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
+### Install nix language server: nil
+
+```
+nix profile install github:oxalica/nil
+```
+
+Modify the extension's settings in your settings.json.
+
+```vscode
+{
+  "nix.enableLanguageServer": true, // Enable LSP.
+  "nix.serverPath": "nil" // The path to the LSP server executable.
+}
+```
+
 ### Install direnv
 
 ```bash
@@ -85,8 +100,8 @@ wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
 
 - reference from [here](https://mayberoot.medium.com/the-perfect-windows-11-dev-environment-setup-with-wezterm-wsl2-and-neovim-d73ab1202703)
 - add the `HOME` environment variable that resolves to C:\Users\username
-- add the `XDG_CONFIG_HOME` environment variable that resolves to C:\Users\username\.config
-- creates `wezterm.lua` under `XDG_CONFIG_HOME` with [content](./wezterm.lua)
+- add the `XDG_CONFIG_HOME` environment variable that resolves to C:\Users\username
+- `mkdir C:\Users\username\wezterm` then touch `wezterm.lua` with [content](./wezterm.lua)
 
 ## Load your setup
 
