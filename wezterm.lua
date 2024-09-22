@@ -18,9 +18,11 @@ local launch_menu = {}
 -- Color scheme, Wezterm has 100s of them you can see here:
 -- https://wezfurlong.org/wezterm/colorschemes/index.html
 config.color_scheme = 'Oceanic Next (Gogh)'
-config.font = wezterm.font('BlexMono Nerd Font')
+config.font = wezterm.font('Hack Nerd Font')
 config.font_size = 11
 config.launch_menu = launch_menu
+config.audible_bell = 'Disabled'
+
 -- makes my cursor blink
 config.default_cursor_style = 'BlinkingBar'
 
