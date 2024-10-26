@@ -6,13 +6,30 @@
 
 ```bash
 curl -sS https://starship.rs/install.sh | sh
+```
+
+```bash
 # Add the following line at the end of the ~/.bashrc file:
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
 # (you put in your bashrc_extra.env already)
 ```
 
 ```bash
 ln -sf $(pwd)/starship.toml ~/.config/
+```
+
+- might need [nerd font](https://www.nerdfonts.com/font-downloads), for example, use `Hack Nerd Font Mono` in VSCODE
+
+## Load your setup
+
+- Adding this to ~/.bashrc
+
+```bash
+# dev_folder should be where you put all the repos
+export dev_folder=~/orbuluh_repo
+export env_folder=${dev_folder}/js_dev_env
+export key_base_dir=${dev_folder}/keys
+source ${env_folder}/bashrc_extra.env
 ```
 
 ## Nix and direnv
@@ -103,16 +120,6 @@ wsl --import NixOS .\AppData\Local\WSL\NixOS .\Downloads\NixOS\nixos-wsl.tar.gz
 - add the `XDG_CONFIG_HOME` environment variable that resolves to C:\Users\username
 - `mkdir C:\Users\username\wezterm` then touch `wezterm.lua` with [content](./wezterm.lua)
 
-## Load your setup
-
-- Adding this to ~/.bashrc
-
-```bash
-# dev_folder should be where you put all the repos
-export dev_folder=[path_to]/orbuluh_repo
-source ${env_folder}/bashrc_extra.env
-```
-
 ## Fonts
 
 - [Noto](https://fonts.google.com/noto/specimen/Noto+Serif+TC)
@@ -153,18 +160,6 @@ sudo apt upgrade
 sudo apt update
 sudo apt install -y silversearcher-ag tree clang clang-format wget \
                     python3 python3-pip npm
-```
-
-## Load your setup
-
-- Adding this to ~/.bashrc
-
-```bash
-# dev_folder should be where you put all the repos
-export dev_folder=~/orbuluh_repo
-export env_folder=${dev_folder}/js_dev_env
-export key_base_dir=${dev_folder}/keys
-source ${env_folder}/bashrc_extra.env
 ```
 
 ## Remote connection X11 forwarding to vscode Remote ext
