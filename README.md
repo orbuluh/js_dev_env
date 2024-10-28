@@ -1,4 +1,74 @@
-# Dev environment cookbook
+# My development environment setup
+
+## Load your setup
+
+- Adding this to ~/.bashrc
+
+```bash
+# dev_folder should be where you put all the repos
+export dev_folder=~/orbuluh_repo
+export env_folder=${dev_folder}/js_dev_env
+export key_base_dir=${dev_folder}/keys
+source ${env_folder}/bashrc_extra.env
+```
+
+## List of modern tools
+
+List from [here](https://news.ycombinator.com/item?id=41037197) and
+
+- [Modern Unix by ibraheemdev](https://github.com/ibraheemdev/modern-unix)
+- [Maintained Modern Unix by johnalanwoods](https://github.com/johnalanwoods/maintained-modern-unix)
+
+### **File and Content Management Tools:**
+
+- **bat** - Enhanced `cat` with syntax highlighting.
+- **difftastic** - Improved `diff` for file comparison.
+- **gdu** - Disk usage analyzer optimized for SSDs; similar to `ncdu`.
+- **zoxide** - Smarter `cd` for directory navigation.
+- **fd** - Fast and user-friendly `find` alternative.
+- **rg (ripgrep)** - Enhanced `grep` for faster text searching.
+- **fzf** - Fuzzy finder for efficient searching.
+- **jless** - JSON viewer with mouse support and collapsible nodes.
+- **dra** - Tool to download and install release assets easily.
+- **cheat** - Alternative to `tldr`, providing short command references.
+
+### **Git and Docker Utilities:**
+
+- **lazygit** - TUI for Git.
+- **lazydocker** - TUI for Docker management.
+- **task** - `Makefile` alternative without Go dependency; works well for complex commands.
+
+### **JSON Processing Tools:**
+
+- **jq** - Powerful JSON processor.
+- **jc** - Converts CLI output to JSON for further manipulation.
+- **gron** - Makes JSON greppable by converting it into line-based format.
+
+### **Performance and Benchmarking Tools:**
+
+- **hyperfine** - Benchmarks CLI commands.
+- **vegeta** - Load testing tool.
+- **oha** - Another load testing tool, alternative to `ab`.
+
+### **Shell Prompt and Multiplexing:**
+
+- ✅ **starship** - Configurable shell prompt across different shells.
+- **zellij** - Alternative to `tmux` or `screen` with a focus on usability.
+- **btop** - Resource monitor as a better alternative to `top`.
+
+### **Other Command Line Enhancements:**
+
+- **justfile** - Simplified task runner, preferred by some over `Make`.
+- **viddy** - `watch` replacement with history tracking.
+- **rmlint** - Finds duplicate files and empty directories.
+
+**Notes on Tool Behavior:**
+
+- **fd and ripgrep:** These tools default to ignoring files in `.gitignore`, which might surprise new users expecting exact behavior mirroring `find` and `grep`. For compatibility, consider aliases like:
+
+  ```bash
+  alias fd='fd --no-ignore'
+  ```
 
 ## [Prompt: Starship](https://starship.rs/guide/)
 
@@ -20,16 +90,24 @@ ln -sf $(pwd)/starship.toml ~/.config/
 
 - might need [nerd font](https://www.nerdfonts.com/font-downloads), for example, use `Hack Nerd Font Mono` in VSCODE
 
-## Load your setup
-
-- Adding this to ~/.bashrc
+## [`zoxide`](https://github.com/ajeetdsouza/zoxide): better `cd`
 
 ```bash
-# dev_folder should be where you put all the repos
-export dev_folder=~/orbuluh_repo
-export env_folder=${dev_folder}/js_dev_env
-export key_base_dir=${dev_folder}/keys
-source ${env_folder}/bashrc_extra.env
+brew install zoxide
+```
+
+## [`fzf`](https://github.com/junegunn/fzf): general fuzzy finder
+
+- [Demo of usage](https://youtu.be/qgG5Jhi_Els?si=n5myvRo7dEy4pt5-)
+
+```bash
+brew install fzf
+```
+
+## [`bat`](https://github.com/sharkdp/bat): better cat
+
+```bash
+brew install bat
 ```
 
 ## Nix and direnv
