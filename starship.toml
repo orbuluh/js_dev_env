@@ -21,6 +21,7 @@ $git_metrics\
 $git_status\
 $hg_branch\
 $docker_context\
+$python\
 $custom\
 $cmd_duration\
 $line_break\
@@ -48,7 +49,7 @@ disabled = false
 
 [hostname]
 ssh_only = false
-format =  "on [$hostname](bold red)"
+format = "on [$hostname](bold red)"
 trim_at = ".companyname.com"
 disabled = true
 
