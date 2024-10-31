@@ -110,6 +110,14 @@ brew install fzf
 brew install bat
 ```
 
+## [`ripgrep-all`](https://github.com/phiresky/ripgrep-all)
+
+```bash
+brew install rga pandoc poppler ffmpeg
+# -----------------------------------
+apt install ripgrep pandoc poppler-utils ffmpeg
+```
+
 ## Nix and direnv
 
 ### Install nix
