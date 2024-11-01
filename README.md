@@ -104,6 +104,12 @@ brew install zoxide
 brew install fzf
 ```
 
+## [`fd`](https://github.com/sharkdp/fd): better find
+
+```bash
+brew install fd
+```
+
 ## [`bat`](https://github.com/sharkdp/bat): better cat
 
 ```bash
