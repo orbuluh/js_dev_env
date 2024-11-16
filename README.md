@@ -70,6 +70,19 @@ List from [here](https://news.ycombinator.com/item?id=41037197) and
   alias fd='fd --no-ignore'
   ```
 
+## [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+
+```bash
+curl https://sh.rustup.rs -sSf | sh
+```
+
+## [Eza: better ls](https://github.com/eza-community/eza)
+
+```bash
+cargo install eza
+sudo ln -s /home/orbuluh/.cargo/bin/eza /usr/local/bin/
+```
+
 ## [Prompt: Starship](https://starship.rs/guide/)
 
 - prompt that can work well with direnv
@@ -94,6 +107,8 @@ ln -sf $(pwd)/starship.toml ~/.config/
 
 ```bash
 brew install zoxide
+#
+sudo apt install zoxide
 ```
 
 ## [`fzf`](https://github.com/junegunn/fzf): general fuzzy finder
@@ -102,18 +117,28 @@ brew install zoxide
 
 ```bash
 brew install fzf
+#
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/
 ```
 
 ## [`fd`](https://github.com/sharkdp/fd): better find
 
 ```bash
 brew install fd
+#
+sudo apt install fd-find
+sudo ln -s /usr/bin/fdfind /usr/local/bin/fd
 ```
 
 ## [`bat`](https://github.com/sharkdp/bat): better cat
 
 ```bash
 brew install bat
+#
+sudo apt install bat #binary is called `batcat`
+sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 ```
 
 ## [`ripgrep-all`](https://github.com/phiresky/ripgrep-all)
@@ -122,6 +147,9 @@ brew install bat
 brew install rga pandoc poppler ffmpeg
 # -----------------------------------
 apt install ripgrep pandoc poppler-utils ffmpeg
+# download binary from release page
+# https://github.com/phiresky/ripgrep-all/releases
+sudo mv rga* /usr/local/bin
 ```
 
 ## Nix and direnv
