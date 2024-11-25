@@ -360,6 +360,19 @@ echo "map <F2> :ClangFormat<CR>" >> ~/.vim_runtime/my_configs.vim
 # Then whenever you press F2, it do the :ClangFormat
 ```
 
+## python uv
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# some quick commands
+uv python install 3.11
+uv init
+uv run hello_world.py # will create the venv
+uv python pin 3.11
+uv add ipykernel # e.g. the uv pip install
+```
+
 ## (latest) cmake
 
 - From [StackOverflow](https://askubuntu.com/a/865294/1660211)
