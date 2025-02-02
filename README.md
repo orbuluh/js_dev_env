@@ -367,10 +367,22 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # some quick commands
 uv python install 3.11
-uv init
-uv run hello_world.py # will create the venv
 uv python pin 3.11
+uv init some_folder #init as a uv project
+cd folder
 uv add ipykernel # e.g. the uv pip install
+```
+
+```bash
+# or setup an old style global wise environment
+uv venv global_uv
+echo -e "\nsource /home/orbuluh/global_uv/bin/activate" >> ~/.bashrc
+source ~/.bashrc
+uv pip install ipykernel
+uv pip install polars[all]
+# then you can create symlink as .venv under a project
+# ln -s ~/global_uv/ .venv
+# and vscode should be able to use it as interpreter and find the module accordingly
 ```
 
 ## (latest) cmake
